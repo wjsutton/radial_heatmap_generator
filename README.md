@@ -19,7 +19,7 @@ Quick Link
 
 ## :a: About
 
-Radial heatmaps looks great and can be effective for visual metaphors of representing data by time such as 24 hours in a day, 12 months in a year. 
+Radial heatmaps looks great and can be effective for visual metaphors of representing data by time e.g. 24 hours in a day, 12 months in a year. 
 
 However, there are some drawbacks:
 
@@ -29,22 +29,38 @@ However, there are some drawbacks:
 
 ## :hammer: The Shiny App
 
-To help creating Radial Heatmap I've built an app using R and Shiny. 
+To help creating Radial Heatmap in Tableau I've built an app using R and Shiny to generate the coordinates. 
 
 You can find the app here: [wjsutton.shinyapps.io/radial_heatmap](https://wjsutton.shinyapps.io/radial_heatmap/)
 
-- Add image
+<a href='https://wjsutton.shinyapps.io/radial_heatmap/'>
+  <img src='https://github.com/wjsutton/radial_heatmap_generator/blob/main/shiny_app_screenshot.png?raw=true' width='100%' >
+</a>
+
+Using this app you can build a template for a radial heatmap by changing the parameters, and download the data to a csv file. 
 
 ## :heavy_plus_sign: Adding to Tableau
 
-Need to join by
+To create the radial heatmap in Tableau you'll need to join the template to your data source. The join should be either by:
 
 - Segment and Ring
 - Individual block
 
+Numbering:
+
+- Segments are numbered from 1, with the first being the top (north) segment and counted clockwise
+- Rings are numbered from 1, with the first being the inner most ring and counted from inner to outer
+- Blocks are numbered from 1, with the first being top block inner most ring, and counted clockwise around the ring, then on to the next from from inner to outer.
+
 ## :page_with_curl: The Source Code
 
-<br>
+The code works from two functions:
+
+- **build_block** which creates the coordinates for individual blocks in a radial heatmap
+- **build_radial_map** which creates generates all the blocks for a radial heatmap
+
+You can review the functions and more notes in the test script: [create_radial_heatmap.R](https://github.com/wjsutton/radial_heatmap_generator/blob/main/create_radial_heatmap.R)
+
 
 Will Sutton, December 2022<br>
 [Twitter][Twitter] :speech_balloon:&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[LinkedIn][LinkedIn] :necktie:&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[GitHub :octocat:][GitHub]&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Website][Website] :link:
