@@ -31,8 +31,9 @@ However, there are some drawbacks:
 
 To help creating Radial Heatmap I've built an app using R and Shiny. 
 
-You can find the app here: [link]()
+You can find the app here: [wjsutton.shinyapps.io/radial_heatmap](https://wjsutton.shinyapps.io/radial_heatmap/)
 
+- Add image
 
 ## :heavy_plus_sign: Adding to Tableau
 
