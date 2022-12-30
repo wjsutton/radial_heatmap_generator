@@ -1,6 +1,6 @@
 
 # Function: build_block
-# Input: Parameters for radial heatmap block
+# Input: Parameters for radial heatmap block, min and max are the angles
 # Returns: The x,y coordinates for an individual block for a radial heatmap as a data.frame
 
 build_block <- function(min,max,increment,inner_radius,outer_radius){
@@ -14,16 +14,16 @@ build_block <- function(min,max,increment,inner_radius,outer_radius){
   
   # Curve bottom line of a rectangle
   for(i in seq(min, max, increment)){
-    x1 <- inner_radius * sin(2*pi*(i/360))
-    y1 <- inner_radius * cos(2*pi*(i/360))
+    x1 <- inner_radius * sin(2*pi*((90 - i)/360))
+    y1 <- inner_radius * cos(2*pi*((90 - i)/360))
     x <- c(x,x1)
     y <- c(y,y1)
   }
   
   # Curve top line of a rectangle
   for(j in seq(max, min, -increment)){
-    x2 <- outer_radius * sin(2*pi*(j/360))
-    y2 <- outer_radius * cos(2*pi*(j/360))
+    x2 <- outer_radius * sin(2*pi*((90 - j)/360))
+    y2 <- outer_radius * cos(2*pi*((90 - j)/360))
     x <- c(x,x2)
     y <- c(y,y2)
   }
@@ -93,8 +93,8 @@ build_radial_map <- function(n_rings,n_segments,radius_start,radius_increase){
     
     # Add dimensions for joining
     df$block_id <- a
-    df$ring <- floor(a / (n_segments+1)) + 1
-    df$segment <- a %% n_segments
+    df$ring <- floor((a-1) / n_segments) +1 
+    df$segment <- ifelse(a %% n_segments == 0,n_segments,a %% n_segments)
     
     # Add loop result to list of data.frames
     radial_heatmap_list[[a]] <- df
@@ -109,10 +109,10 @@ build_radial_map <- function(n_rings,n_segments,radius_start,radius_increase){
 
 # Create a radial with some parameters
 radial_heatmap_df <- build_radial_map(
-                          n_rings = 15,
-                          n_segments = 73,
-                          radius_start = 5,
-                          radius_increase = 0.25)
+                          n_rings = 3,
+                          n_segments = 12,
+                          radius_start = 1,
+                          radius_increase = 0.5)
 
 # create a plot of the output radial heatmap
 plot(radial_heatmap_df$x,radial_heatmap_df$y,type="n",xlab ='x', ylab = 'y')

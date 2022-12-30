@@ -22,7 +22,7 @@ ui <- fluidPage(
                         "Number of rings:",
                         min = 1,
                         max = 1000,
-                        value = 20),
+                        value = 10),
           numericInput("segments",
                         "Number of segments:",
                         min = 1,
@@ -53,6 +53,11 @@ ui <- fluidPage(
 server <- function(input, output) {
 
     output$distPlot <- renderPlot({
+      
+      # Function: build_block
+      # Input: Parameters for radial heatmap block, min and max are the angles
+      # Returns: The x,y coordinates for an individual block for a radial heatmap as a data.frame
+      
       build_block <- function(min,max,increment,inner_radius,outer_radius){
         
         # Imagine a rectangle curved to fit into a circle
@@ -64,16 +69,16 @@ server <- function(input, output) {
         
         # Curve bottom line of a rectangle
         for(i in seq(min, max, increment)){
-          x1 <- inner_radius * sin(2*pi*(i/360))
-          y1 <- inner_radius * cos(2*pi*(i/360))
+          x1 <- inner_radius * sin(2*pi*((90 - i)/360))
+          y1 <- inner_radius * cos(2*pi*((90 - i)/360))
           x <- c(x,x1)
           y <- c(y,y1)
         }
         
         # Curve top line of a rectangle
         for(j in seq(max, min, -increment)){
-          x2 <- outer_radius * sin(2*pi*(j/360))
-          y2 <- outer_radius * cos(2*pi*(j/360))
+          x2 <- outer_radius * sin(2*pi*((90 - j)/360))
+          y2 <- outer_radius * cos(2*pi*((90 - j)/360))
           x <- c(x,x2)
           y <- c(y,y2)
         }
@@ -143,8 +148,8 @@ server <- function(input, output) {
           
           # Add dimensions for joining
           df$block_id <- a
-          df$ring <- floor(a / (n_segments+1)) + 1
-          df$segment <- a %% n_segments
+          df$ring <- floor((a-1) / n_segments) +1 
+          df$segment <- ifelse(a %% n_segments == 0,n_segments,a %% n_segments)
           
           # Add loop result to list of data.frames
           radial_heatmap_list[[a]] <- df
