@@ -56,7 +56,7 @@ Numbering:
 
 In the Tableau dashboard: [Radial Heatmap Template](https://public.tableau.com/app/profile/wjsutton/viz/RadialHeatmapTemplateB2VBWeek202022/RadialHeatmapTemplate)
  
-I've taken the data from Back 2 Viz Basic's [Week 20 2022 Change over Time](https://data.world/back2vizbasics/2022week-20-change-over-time) challenge to demo build the template. 
+I've taken the data from Back 2 Viz Basic's [Week 20 2022 Change Over Time](https://data.world/back2vizbasics/2022week-20-change-over-time) challenge to demo build the template. 
 
 It's a simple dataset of 3 columns:
 
@@ -80,6 +80,8 @@ To join this data to the template I'll show:
 
 ### Building the Radial in Tableau
 
+Construct the radial from template
+
 - Add X to Rows
 - Add Y to Columns
 - Add Block Id to Detail in the Marks Card (right click convert to dimension)
@@ -87,6 +89,15 @@ To join this data to the template I'll show:
 - Add Ring to Detail in the Marks Card (right click convert to dimension)
 - Convert Mark Type to Polygon
 = Add Path to Path in the Marks Card (right click convert to dimension)
+
+Incorporate the data (Back 2 Viz Basic's [Week 20 2022 Change Over Time](https://data.world/back2vizbasics/2022week-20-change-over-time))
+
+- Add percent onto Color Mark
+- Add Month to Detail in the Marks Card (right click convert to date format as Month and data type as Discrete)
+- Add Survey Year to Detail in the Marks Card (right click convert to dimension)
+
+You can check your work against the template Tableau dashboard: [Radial Heatmap Template](https://public.tableau.com/app/profile/wjsutton/viz/RadialHeatmapTemplateB2VBWeek202022/RadialHeatmapTemplate)
+
 
 ## :page_with_curl: The Source Code
 
