@@ -19,7 +19,27 @@ Quick Link
 
 ## :a: About
 
+Radial heatmaps looks great and can be effective for visual metaphors of representing data by time such as 24 hours in a day, 12 months in a year. 
+
+However, there are some drawbacks:
+
+- Radial data is hard to intepret than data plotted on a straight line
+- Inner rings occupy less space than outer ones, so can be viewed as less important
+- Plotting a circle on a square area leaves unused space in the corners (but you can add notes and insights here)
+
 ## :hammer: The Shiny App
+
+To help creating Radial Heatmap I've built an app using R and Shiny. 
+
+You can find the app here: [link]()
+
+
+## :heavy_plus_sign: Adding to Tableau
+
+Need to join by
+
+- Segment and Ring
+- Individual block
 
 ## :page_with_curl: The Source Code
 
