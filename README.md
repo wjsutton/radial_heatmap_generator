@@ -34,28 +34,35 @@ To help creating Radial Heatmap in Tableau I've built an app using R and Shiny t
 You can find the app here: [wjsutton.shinyapps.io/radial_heatmap](https://wjsutton.shinyapps.io/radial_heatmap/)
 
 <a href='https://wjsutton.shinyapps.io/radial_heatmap/'>
-  <img src='https://github.com/wjsutton/radial_heatmap_generator/blob/main/shiny_app_screenshot.png?raw=true' width='100%' >
+  <img src='https://github.com/wjsutton/radial_heatmap_generator/blob/main/images/shiny_app_screenshot.png?raw=true' width='100%' >
 </a>
 
 Using this app you can build a template for a radial heatmap by changing the parameters, and download the data to a csv file. 
 
-## :heavy_plus_sign: Adding to Tableau
+## :heavy_plus_sign: Adding the Template to Tableau
 
 To create the radial heatmap in Tableau you'll need to join the template to your data source. The join should be either by:
 
 - Segments and Rings
 - Individual blocks
 
-Numbering:
+Numbering Segments, Rings and Blocks:
 
 - Segments are numbered from 1, with the first being the top (north) segment and counted clockwise
 - Rings are numbered from 1, with the first being the inner most ring and counted from inner to outer
 - Blocks are numbered from 1, with the first being top block inner most ring, and counted clockwise around the ring, then on to the next from from inner to outer.
 
+
+<a href='https://public.tableau.com/app/profile/wjsutton/viz/RadialHeatmapTemplateB2VBWeek202022/RadialHeatmapTemplate'>
+  <img align="right" src='https://github.com/wjsutton/radial_heatmap_generator/blob/main/images/Radial_Heatmap_Template.png?raw=true' width='40%' >
+</a>
+
 ### Demo
 
-In the Tableau dashboard: [Radial Heatmap Template](https://public.tableau.com/app/profile/wjsutton/viz/RadialHeatmapTemplateB2VBWeek202022/RadialHeatmapTemplate)
- 
+This is a quick demo to show how you can use the radial heatmap template. 
+
+In the Tableau dashboard: [Radial Heatmap Template](https://public.tableau.com/app/profile/wjsutton/viz/RadialHeatmapTemplateB2VBWeek202022/RadialHeatmapTemplate).
+
 I've taken the data from Back 2 Viz Basic's [Week 20 2022 Change Over Time](https://data.world/back2vizbasics/2022week-20-change-over-time) challenge to demo build the template. 
 
 It's a simple dataset of 3 columns:
