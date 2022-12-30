@@ -43,14 +43,50 @@ Using this app you can build a template for a radial heatmap by changing the par
 
 To create the radial heatmap in Tableau you'll need to join the template to your data source. The join should be either by:
 
-- Segment and Ring
-- Individual block
+- Segments and Rings
+- Individual blocks
 
 Numbering:
 
 - Segments are numbered from 1, with the first being the top (north) segment and counted clockwise
 - Rings are numbered from 1, with the first being the inner most ring and counted from inner to outer
 - Blocks are numbered from 1, with the first being top block inner most ring, and counted clockwise around the ring, then on to the next from from inner to outer.
+
+### Demo
+
+In the Tableau dashboard: [Radial Heatmap Template](https://public.tableau.com/app/profile/wjsutton/viz/RadialHeatmapTemplateB2VBWeek202022/RadialHeatmapTemplate)
+ 
+I've taken the data from Back 2 Viz Basic's [Week 20 2022 Change over Time](https://data.world/back2vizbasics/2022week-20-change-over-time) challenge to demo build the template. 
+
+It's a simple dataset of 3 columns:
+
+| Month | Survey Year | Percent |
+|:----|:---------|:---------|
+| January | 1960 | 2 |
+| February | 1960 | 1 |
+| March | 1960 | 2 |
+
+### Joining the Datasets
+
+To join this data to the template I'll show:
+
+#### Survey Years = Rings
+
+- Using a CASE statement to convert the years to 1, 2, 3. e.g. `CASE [Survey Year] WHEN 1960 THEN 1 WHEN 2005 THEN 2 WHEN 2021 THEN 3 END`
+
+#### Months = Segments
+
+- Using `DATEPART('month' [Month])` to number months from 1-12, note: Month must be as a date data type 
+
+### Building the Radial in Tableau
+
+- Add X to Rows
+- Add Y to Columns
+- Add Block Id to Detail in the Marks Card (right click convert to dimension)
+- Add Segment to Detail in the Marks Card (right click convert to dimension)
+- Add Ring to Detail in the Marks Card (right click convert to dimension)
+- Convert Mark Type to Polygon
+= Add Path to Path in the Marks Card (right click convert to dimension)
 
 ## :page_with_curl: The Source Code
 
