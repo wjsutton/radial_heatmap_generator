@@ -27,6 +27,8 @@ However, there are some drawbacks:
 - Inner rings occupy less space than outer ones, so can be viewed as less important
 - Plotting a circle on a square area leaves unused space in the corners (but you can add notes and insights here)
 
+![](https://github.com/wjsutton/radial_heatmap_generator/blob/main/images/cover_photo.png)
+
 ## :hammer: The Shiny App
 
 To help creating Radial Heatmap in Tableau I've built an app using R and Shiny to generate the coordinates. 
@@ -79,7 +81,14 @@ To join this data to the template I'll show:
 
 #### Survey Years = Rings
 
-- Using a CASE statement to convert the years to 1, 2, 3. e.g. `CASE [Survey Year] WHEN 1960 THEN 1 WHEN 2005 THEN 2 WHEN 2021 THEN 3 END`
+- Using a CASE statement to convert the years to 1, 2, 3. e.g. 
+```
+CASE [Survey Year] 
+WHEN 1960 THEN 1 
+WHEN 2005 THEN 2 
+WHEN 2021 THEN 3 
+END
+```
 
 #### Months = Segments
 
